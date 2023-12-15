@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :orders
+  resources :orders do
+    get :update_order , on: :collection
+  end
   get 'store/index'
   resources :products do
-    post :update_products
+    get :update_products, on: :collection
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = Order.all
+  end
+
+  def update_order
     import_orders
   end
 
@@ -83,6 +86,8 @@ class OrdersController < ApplicationController
             Order.create(id_shopify: order["id"], total_price: order["current_total_price"], email_contact: order["contact_email"], number: order["number"], shipping_address: address)
           end
         end
+
+        redirect_to orders_path , notice: "Orders atualizados"
     end
 
     # Use callbacks to share common setup or constraints between actions.
