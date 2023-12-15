@@ -30,25 +30,12 @@ include ShopifyAuthenticate
     )
     response = client.get(path: 'shop')
 
-    p "================================"
-=begin
-          orders = client.get(
-            path: 'orders',
-            query: {
-              "status": "any"
-            },
-          )
-=end
 
           products = client.get(
             path: "products"
           )
-          #p products.body["product"]
-          #products.body
-
           products = products.body["products"]
 
-          p "================================"
           for product in products
             product_exists = Product.find_by(name: product["title"])
             if product_exists&.name != product["title"]
