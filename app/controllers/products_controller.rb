@@ -4,7 +4,6 @@ include ShopifyAuthenticate
   # GET /products or /products.json
   def index
     @products = Product.all
-    update_products
   end
 
   # GET /products/1 or /products/1.json
@@ -29,19 +28,19 @@ include ShopifyAuthenticate
       session: session
     )
     response = client.get(path: 'shop')
-
-
           products = client.get(
             path: "products"
           )
-          products = products.body["products"]
 
+          products = products.body["products"]
           for product in products
             product_exists = Product.find_by(name: product["title"])
             if product_exists&.name != product["title"]
-              Product.create(name: product["title"],  html_body: product["body_html"], image: product["images"].last["src"])
+
+              Product.create(name: product["title"], price: product["price"] ,html_body: product["body_html"], image: product["images"].last["src"])
+            end
           end
-          end
+      redirect_to products_path, notice: "Produtos importados com sucesso!"
   end
 
   # POST /products or /products.json

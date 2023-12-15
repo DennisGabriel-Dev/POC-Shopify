@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Orders</h1>
-
+<%= link_to "Atualizar pedidos" , update_order_orders_path %>
 <div id="orders">
   <% @orders.each do |order| %>
     <%= render order %>

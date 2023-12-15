@@ -1,12 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Products</h1>
-
-<div id="products">
+<%= link_to "Update Products", update_products_products_path %>
+<div id="products" >
   <% @products.each do |product| %>
-    <%= render product %>
+    <%= render product, class: "text-center "%>
     <p>
       <%= link_to "Show this product", product %>
+      <br>
+      <br>
     </p>
   <% end %>
 </div>

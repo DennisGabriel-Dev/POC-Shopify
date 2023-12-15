@@ -1,22 +1,19 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= product.price %>
-  </p>
-
-  <p>
-    <strong>Html body:</strong>
-    <%= sanitize product.html_body %>
-  </p>
-
-  <p>
-  <strong>Image:</strong>
-    <img src="<%= product.image %>">
-  </p>
-
+<div id="<%= dom_id product %>" class="col">
+  <div class="container ">
+    <div class="row">
+      <div class="card" style="width: 20rem;">
+      <img src="<%= product.image %>" class="card-img-top" alt="...">
+      <div class="card-body ">
+        <p class="">
+            <strong>Name:</strong>
+            <%= product.name %>
+        </p>
+        
+        <p class="card-text"><%=  sanitize(product.html_body[0..80]) %></p>
+        <p class="list-group-item">
+            <strong>Price:</strong>
+            <%= product.price %>
+        </p>
+  </div>
+</div>
 </div>
