@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   get 'store/index'
   resources :products do
     post :update_products
